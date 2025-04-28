@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState('');
-  const [backendUrl, setBackendUrl] = useState('https://your-backend-url.onrender.com'); // <- CHANGE THIS
+  const [backendUrl, setBackendUrl] = useState('https://moviefinder-ec5p.onrender.com');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
