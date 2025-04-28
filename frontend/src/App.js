@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState('');
-  const [backendUrl, setBackendUrl] = useState('https://moviefinder-ec5p.onrender.com');
+  const [backendUrl, setBackendUrl] = useState('https://moviefinder-ec5p.onrender.com'); // <-- Replace with your real Render URL
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -21,9 +21,13 @@ function App() {
 
     try {
       setUploadStatus('Uploading...');
+
       const response = await axios.post(`${backendUrl}/upload/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
+        },
+        validateStatus: function (status) {
+          return status >= 200 && status < 300; // Treat only 2xx as success
         }
       });
 
